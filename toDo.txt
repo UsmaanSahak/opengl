@@ -1,0 +1,49 @@
+To Do:
+
+1- Make vehicle with animations.
+2- Make two generic buildings made up of walls and misc to copy and paste.
+3- Make checkpoints.
+4- Make map containing checkpoints.
+5- Make a loading screen full of levels, and make an icon for level 1.
+
+
+6- Make general rendering and loading skeleton:
+  Make a list of objects, each with its own coordinates.
+  modelname     coordinate
+
+7- Make a directory, models, to hold all of the nonmap obj files to load.
+8- Make a directory, maps, to hold all the map obj files.
+
+
+
+
+
+What should happen when initiated:
+loadListObj(levelsMenu); //Pushes the title, and load level selection.
+loadListObj(level1) runs if text 'level 1' from above render is clicked.
+  //loadListObj(listName) will load the map and all of the objects in the list.
+Loop(); //Checks whether in a checkpoint object, checks the actions pending in queue.
+Car is spawned on top of a checkpoint. Checkpoint initiates a text box action and eagleview camera 
+  pans through track.
+
+
+
+
+/*
+file name: main.cpp
+description: Just a driver to run the program.
+Declaration and initialation of global variables.
+*/
+
+string map = "";
+vector<void(*)()> actionQueue;
+initWindow(int width, int height);
+loadListObj(levelsMenu);
+loadListObj(level1);
+Loop() {
+  updateOrientAndPos(); //Take keyboard and mouse input to rotate camera and position
+  inCheckPoint(); //Check if in checkpoint
+  runActionQueue(); //pops and pushes function pointers, iterating through actionQueue
+}
+
+
